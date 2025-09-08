@@ -30,7 +30,7 @@
     </div>
 
     <!-- Search Form -->
-    <div class="relative z-20 -mt-16 max-w-6xl mx-auto px-6">
+    <!-- <div class="relative z-20 -mt-16 max-w-6xl mx-auto px-6">
       <div class="bg-white rounded-2xl shadow-2xl p-8 backdrop-blur-lg border border-white/20">
         <div class="flex flex-wrap gap-4 mb-6">
           <button 
@@ -132,7 +132,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Features Section -->
     <div class="max-w-7xl mx-auto px-6 py-20">
