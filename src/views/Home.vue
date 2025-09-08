@@ -137,7 +137,7 @@
     <!-- Features Section -->
     <div class="max-w-7xl mx-auto px-6 py-20">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose SkyWings?</h2>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose KeepTrack?</h2>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">Experience the future of travel booking with our innovative features and unmatched service.</p>
       </div>
       
@@ -211,7 +211,7 @@
                   <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
                 </svg>
               </div>
-              <span class="text-xl font-bold">SkyWings</span>
+              <span class="text-xl font-bold">KeepTrack</span>
             </div>
             <p class="text-gray-400 leading-relaxed">Your trusted partner for seamless travel experiences around the world.</p>
           </div>
@@ -259,7 +259,7 @@
         </div>
         
         <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p class="text-gray-400">&copy; 2025 SkyWings. All rights reserved.</p>
+          <p class="text-gray-400">&copy; 2025 KeepTrack.All rights reserved.</p>
         </div>
       </div>
     </footer>

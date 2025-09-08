@@ -12,7 +12,7 @@
                 </svg>
               </div>
               <span class="ml-3 text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                SkyWings
+                KeepTrack
               </span>
             </div>
           </router-link>
