@@ -29,6 +29,7 @@ const routes = [
   { path: '/admin/flights', name: 'AdminFlights', component: () => import('../views/admin/AdminFlights.vue'), meta: { requiresAuth: true, role: 'admin' } },
   { path: '/admin/bookings', name: 'AdminBookings', component: () => import('../views/admin/AdminBookings.vue'), meta: { requiresAuth: true, role: 'admin' } },
   { path: '/admin/tickets', name: 'AdminTickets', component: () => import('../views/admin/AdminTickets.vue'), meta: { requiresAuth: true, role: 'admin' } },
+  { path: '/admin/airports', name: 'AdminAirports', component: () => import('../views/admin/AdminAirports.vue'), meta: { requiresAuth: true, role: 'admin' } },
 
   // catch all -> home
   { path: '/:catchAll(.*)', redirect: '/' }

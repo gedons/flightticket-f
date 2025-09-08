@@ -27,7 +27,7 @@
               <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11.43a1 1 0 01.725-.962l5-1.429a1 1 0 001.17-1.409l-7-14z" />
               </svg>
-              Search Flights
+              Search
             </router-link>
             
             <!-- Authenticated Links - User -->
@@ -92,6 +92,17 @@
                 </svg>
                  Tickets
               </router-link>
+
+              <router-link 
+                to="/admin/airports" 
+                class="text-gray-600 hover:text-purple-600 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center hover:bg-purple-50 group"
+                active-class="text-purple-600 bg-purple-50 shadow-sm"
+              >
+                <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                </svg>
+                 Airports
+              </router-link>
             </template>
           </div>
         </div>
@@ -120,7 +131,7 @@
               <div class="flex items-center space-x-4">
                 <div class="flex items-center bg-gray-50 rounded-xl px-4 py-2 border border-gray-200">
                   <div class="flex flex-col">
-                    <span class="text-xs text-gray-500 font-medium">Welcome back</span>
+                    <span class="text-xs text-gray-500 font-medium">Welcome</span>
                     <span class="text-sm font-bold text-gray-800">{{ auth.user?.name ?? 'User' }}</span>
                   </div>
                   
@@ -292,6 +303,16 @@
                   <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
                 </svg>
                  Tickets
+              </router-link>
+              <router-link 
+                to="/admin/airports" 
+                class="text-gray-600 hover:text-purple-600 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center hover:bg-purple-50 group"
+                active-class="text-purple-600 bg-purple-50 shadow-sm"
+              >
+                <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                </svg>
+                 Airports
               </router-link>
             </template>
             
