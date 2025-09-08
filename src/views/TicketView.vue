@@ -242,6 +242,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { getMyTicket } from '../services/tickets.service';
+import { scanTicket } from '../services/tickets.service';
 
 const route = useRoute();
 const router = useRouter();
@@ -252,16 +253,47 @@ const loading = ref(false);
 async function load() {
   loading.value = true;
   try {
-    const res = await getMyTicket(route.params.id);
-    ticket.value = res.data.ticket || res.data.t;
-    booking.value = res.data.booking || res.data.b;
-  } catch (err) {
-    alert(err?.response?.data?.message || err.message || 'Failed to load ticket');
-    router.push('/dashboard');
-  } finally {
+    const token = route.query.token;
+    const ticketId = route.params.id;
+
+    if (token) {
+      // Public scan flow using the signed token
+      const res = await scanTicket(token);
+      // scan endpoint returns { ticket, booking }
+      ticket.value = res.data.ticket || null;
+      booking.value = res.data.booking || null;
+
+      // Optionally update the URL to remove token from visible bar (but keep it in history)
+      // router.replace({ path: route.path, query: {} }).catch(()=>{});
+      loading.value = false;
+      return;
+    }
+
+    // No token: fallback to authenticated user fetch
+    // Call GET /api/tickets/:id (requires authentication)
+    if (ticketId) {
+      const res = await getMyTicket(ticketId);
+      // existing getMyTicket returns { ticket, booking } or ticket in res.data
+      // support both shapes:
+      if (res.data.ticket) {
+        ticket.value = res.data.ticket;
+        booking.value = res.data.booking;
+      } else {
+        ticket.value = res.data.ticket || res.data;
+        booking.value = res.data.booking || null;
+      }
+      loading.value = false;
+      return;
+    }
+
     loading.value = false;
+  } catch (err) {
+    console.error('Failed to load ticket', err);
+    loading.value = false;
+    // optional: if token invalid, show friendly page / keep token in query for debug
   }
 }
+
 
 function statusBadgeClass(status) {
   const statusClasses = {
