@@ -68,15 +68,15 @@
               <!-- Origin -->
               <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 transform hover:scale-105 transition-transform duration-200">
                 <div class="text-sm text-blue-700 font-semibold mb-3">Departure</div>
-                <div class="text-1xl font-semibold text-blue-900">{{ booking.flight.origin.code }}</div>
+                <div class="text-sm font-semibold text-blue-900">{{ booking.flight.origin.code }}</div>
                 <div class="text-gray-700 font-medium">{{ booking.flight.origin.name }}</div>
                 <div class="text-gray-600 text-sm">{{ booking.flight.origin.city }}, {{ booking.flight.origin.country }}</div>
                 <div class="mt-4">
                   <div class="text-xs text-gray-500 font-medium">Date & Time</div>
-                  <div class="text-lg font-semibold text-gray-900">
+                  <div class="text-sm font-semibold text-gray-900">
                     {{ new Date(booking.flight.departureTime).toLocaleDateString() }}
                   </div>
-                  <div class="text-lg font-semibold text-gray-900">
+                  <div class="text-xs font-semibold text-gray-900">
                     {{ new Date(booking.flight.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
                   </div>
                 </div>
@@ -85,15 +85,15 @@
               <!-- Destination -->
               <div class="bg-green-50 p-5 rounded-xl border border-green-100 transform hover:scale-105 transition-transform duration-200">
                 <div class="text-sm text-green-700 font-semibold mb-3">Arrival</div>
-                <div class="text-1xl font-semibold text-green-900">{{ booking.flight.destination.code }}</div>
+                <div class="text-sm font-semibold text-green-900">{{ booking.flight.destination.code }}</div>
                 <div class="text-gray-700 font-medium">{{ booking.flight.destination.name }}</div>
                 <div class="text-gray-600 text-sm">{{ booking.flight.destination.city }}, {{ booking.flight.destination.country }}</div>
                 <div class="mt-4">
                   <div class="text-xs text-gray-500 font-medium">Date & Time</div>
-                  <div class="text-lg font-semibold text-gray-900">
+                  <div class="text-sm font-semibold text-gray-900">
                     {{ new Date(booking.flight.arrivalTime).toLocaleDateString() }}
                   </div>
-                  <div class="text-lg font-semibold text-gray-900">
+                  <div class="text-xs font-semibold text-gray-900">
                     {{ new Date(booking.flight.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
                   </div>
                 </div>
