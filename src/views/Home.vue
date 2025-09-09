@@ -25,6 +25,12 @@
           <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
             Discover amazing destinations, book flights in seconds, and create memories that last a lifetime with our seamless booking experience.
           </p>
+          <router-link
+            to="/track"
+            class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-1 transform transition-all duration-300"
+              >
+            Track Ticket
+          </router-link>
         </div>
       </div>
     </div>
