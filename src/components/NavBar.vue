@@ -20,7 +20,7 @@
           <!-- Primary Navigation (Desktop) -->
           <div class="hidden md:ml-10 md:flex md:items-center md:space-x-2">
             <router-link 
-              to="/flights" 
+              to="/track" 
               class="text-gray-600 hover:text-blue-600 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 flex items-center hover:bg-blue-50 group"
               active-class="text-blue-600 bg-blue-50 shadow-sm"
             >
