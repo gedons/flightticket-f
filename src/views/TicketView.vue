@@ -58,7 +58,7 @@
               </svg>
               <span class="text-2xl font-bold text-white">American Airlines</span>
             </div>
-            <div class="text-white text-sm font-medium">Flight Reservation</div>
+            <!-- <div class="text-white text-sm font-medium">Flight Reservation</div> -->
           </div>
           
           <div class="mt-20">
