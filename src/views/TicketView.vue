@@ -37,7 +37,7 @@
           <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="text-xl font-semibold text-gray-800">Booking Reference</h2>
-              <h2 class="text-xs font-semibold text-gray-800">American Airlines</h2>
+              <h2 class="text-xs font-semibold text-green-800">American Airlines</h2>
               <div class="text-3xl font-bold text-indigo-600 mt-1">{{ booking.pnr || '—' }}</div>
             </div>
             <div class="mt-4 md:mt-0">
@@ -49,74 +49,86 @@
         </div>
 
         <!-- Flight Information Card -->
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Flight Information</h2>
-          <h2 class="text-xs font-semibold text-gray-800">American Airlines</h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <!-- Origin -->
-            <div class="bg-blue-50 p-4 rounded-lg">
-              <div class="text-sm text-blue-600 font-medium mb-2">Departure</div>
-              <div class="text-2xl font-bold text-blue-800">{{ booking.flight.origin.code }}</div>
-              <div class="text-gray-700">{{ booking.flight.origin.name }}</div>
-              <div class="text-gray-600">{{ booking.flight.origin.city }}, {{ booking.flight.origin.country }}</div>
-              <div class="mt-3">
-                <div class="text-sm text-gray-500">Date & Time</div>
-                <div class="text-lg font-semibold text-gray-900">
-                  {{ new Date(booking.flight.departureTime).toLocaleDateString() }}
-                </div>
-                <div class="text-lg font-semibold text-gray-900">
-                  {{ new Date(booking.flight.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
-                </div>
-              </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 relative overflow-hidden">
+          <!-- American Airlines Branding -->
+          <div class="absolute top-0 left-0 w-full h-16 bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-between px-6">
+            <div class="flex items-center space-x-2">
+              <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5-2-1-8 4-8-4-2 1z"/>
+              </svg>
+              <span class="text-2xl font-bold text-white">American Airlines</span>
             </div>
-            
-            <!-- Destination -->
-            <div class="bg-green-50 p-4 rounded-lg">
-              <div class="text-sm text-green-600 font-medium mb-2">Arrival</div>
-              <div class="text-2xl font-bold text-green-800">{{ booking.flight.destination.code }}</div>
-              <div class="text-gray-700">{{ booking.flight.destination.name }}</div>
-              <div class="text-gray-600">{{ booking.flight.destination.city }}, {{ booking.flight.destination.country }}</div>
-              <div class="mt-3">
-                <div class="text-sm text-gray-500">Date & Time</div>
-                <div class="text-lg font-semibold text-gray-900">
-                  {{ new Date(booking.flight.arrivalTime).toLocaleDateString() }}
-                </div>
-                <div class="text-lg font-semibold text-gray-900">
-                  {{ new Date(booking.flight.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
-                </div>
-              </div>
-            </div>
+            <div class="text-white text-sm font-medium">Flight Reservation</div>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-              <svg class="w-5 h-5 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11.43a1 1 0 01.725-.962l5-1.429a1 1 0 001.17-1.409l-7-14z" />
-              </svg>
-              <div>
-                <div class="text-xs text-gray-500">Flight Number</div>
-                <div class="font-medium">{{ booking.flight.flightNumber }}</div>
+          <div class="mt-20">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Flight Information</h2>          
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <!-- Origin -->
+              <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 transform hover:scale-105 transition-transform duration-200">
+                <div class="text-sm text-blue-700 font-semibold mb-3">Departure</div>
+                <div class="text-3xl font-extrabold text-blue-900">{{ booking.flight.origin.code }}</div>
+                <div class="text-gray-700 font-medium">{{ booking.flight.origin.name }}</div>
+                <div class="text-gray-600 text-sm">{{ booking.flight.origin.city }}, {{ booking.flight.origin.country }}</div>
+                <div class="mt-4">
+                  <div class="text-xs text-gray-500 font-medium">Date & Time</div>
+                  <div class="text-lg font-semibold text-gray-900">
+                    {{ new Date(booking.flight.departureTime).toLocaleDateString() }}
+                  </div>
+                  <div class="text-lg font-semibold text-gray-900">
+                    {{ new Date(booking.flight.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Destination -->
+              <div class="bg-green-50 p-5 rounded-xl border border-green-100 transform hover:scale-105 transition-transform duration-200">
+                <div class="text-sm text-green-700 font-semibold mb-3">Arrival</div>
+                <div class="text-3xl font-extrabold text-green-900">{{ booking.flight.destination.code }}</div>
+                <div class="text-gray-700 font-medium">{{ booking.flight.destination.name }}</div>
+                <div class="text-gray-600 text-sm">{{ booking.flight.destination.city }}, {{ booking.flight.destination.country }}</div>
+                <div class="mt-4">
+                  <div class="text-xs text-gray-500 font-medium">Date & Time</div>
+                  <div class="text-lg font-semibold text-gray-900">
+                    {{ new Date(booking.flight.arrivalTime).toLocaleDateString() }}
+                  </div>
+                  <div class="text-lg font-semibold text-gray-900">
+                    {{ new Date(booking.flight.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-              <svg class="w-5 h-5 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-              </svg>
-              <div>
-                <div class="text-xs text-gray-500">Fare Class</div>
-                <div class="font-medium capitalize">{{ booking.fareClass }}</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                <svg class="w-6 h-6 text-blue-600 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11.43a1 1 0 01.725-.962l5-1.429a1 1 0 001.17-1.409l-7-14z" />
+                </svg>
+                <div>
+                  <div class="text-xs text-gray-500 font-medium">Flight Number</div>
+                  <div class="font-semibold text-gray-900">{{ booking.flight.flightNumber }}</div>
+                </div>
               </div>
-            </div>
-            
-            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-              <svg class="w-5 h-5 text-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-              </svg>
-              <div>
-                <div class="text-xs text-gray-500">Seat(s)</div>
-                <div class="font-medium">{{ booking.seats.join(', ') || 'Not assigned' }}</div>
+              
+              <div class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                <svg class="w-6 h-6 text-blue-600 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                <div>
+                  <div class="text-xs text-gray-500 font-medium">Fare Class</div>
+                  <div class="font-semibold text-gray-900 capitalize">{{ booking.fareClass }}</div>
+                </div>
+              </div>
+              
+              <div class="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                <svg class="w-6 h-6 text-blue-600 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                </svg>
+                <div>
+                  <div class="text-xs text-gray-500 font-medium">Seat(s)</div>
+                  <div class="font-semibold text-gray-900">{{ booking.seats.join(', ') || 'Not assigned' }}</div>
+                </div>
               </div>
             </div>
           </div>
