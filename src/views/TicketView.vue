@@ -37,6 +37,7 @@
           <div class="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <h2 class="text-xl font-semibold text-gray-800">Booking Reference</h2>
+              <h2 class="text-xs font-semibold text-gray-800">American Airlines</h2>
               <div class="text-3xl font-bold text-indigo-600 mt-1">{{ booking.pnr || '—' }}</div>
             </div>
             <div class="mt-4 md:mt-0">
@@ -50,6 +51,7 @@
         <!-- Flight Information Card -->
         <div class="bg-white rounded-xl shadow-md p-6">
           <h2 class="text-xl font-semibold text-gray-800 mb-4">Flight Information</h2>
+          <h2 class="text-xs font-semibold text-gray-800">American Airlines</h2>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <!-- Origin -->
