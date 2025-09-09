@@ -68,7 +68,7 @@
               <!-- Origin -->
               <div class="bg-blue-50 p-5 rounded-xl border border-blue-100 transform hover:scale-105 transition-transform duration-200">
                 <div class="text-sm text-blue-700 font-semibold mb-3">Departure</div>
-                <div class="text-3xl font-extrabold text-blue-900">{{ booking.flight.origin.code }}</div>
+                <div class="text-1xl font-semibold text-blue-900">{{ booking.flight.origin.code }}</div>
                 <div class="text-gray-700 font-medium">{{ booking.flight.origin.name }}</div>
                 <div class="text-gray-600 text-sm">{{ booking.flight.origin.city }}, {{ booking.flight.origin.country }}</div>
                 <div class="mt-4">
@@ -85,7 +85,7 @@
               <!-- Destination -->
               <div class="bg-green-50 p-5 rounded-xl border border-green-100 transform hover:scale-105 transition-transform duration-200">
                 <div class="text-sm text-green-700 font-semibold mb-3">Arrival</div>
-                <div class="text-3xl font-extrabold text-green-900">{{ booking.flight.destination.code }}</div>
+                <div class="text-1xl font-semibold text-green-900">{{ booking.flight.destination.code }}</div>
                 <div class="text-gray-700 font-medium">{{ booking.flight.destination.name }}</div>
                 <div class="text-gray-600 text-sm">{{ booking.flight.destination.city }}, {{ booking.flight.destination.country }}</div>
                 <div class="mt-4">
