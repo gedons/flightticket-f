@@ -12,24 +12,11 @@ const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/+$/, '') || 'h
    Authenticated endpoints
    ------------------------ */
 
-/** Create a booking (authenticated)
- * payload: { flightId, fareClass, passengerCount, passengers[], seats[], paymentMethod? }
- */
 export const createBooking = (payload) => api.post('/bookings', payload);
-
-/** Get a booking (authenticated) */
 export const getBooking = (id) => api.get(`/bookings/${id}`);
-
-/** List bookings for current user (authenticated) */
 export const listUserBookings = (params = {}) => api.get('/bookings', { params });
-
-/** Cancel a booking (authenticated) */
 export const cancelBooking = (id) => api.post(`/bookings/${id}/cancel`);
-
-/** Admin: mark booking as paid */
 export const markPaid = (id, note = '') => api.post(`/bookings/${id}/mark-paid`, { note });
-
-/** Admin: confirm booking (generate ticket) */
 export const confirmBooking = (id) => api.post(`/bookings/${id}/confirm`);
 
 /* ------------------------
@@ -37,30 +24,38 @@ export const confirmBooking = (id) => api.post(`/bookings/${id}/confirm`);
    ------------------------ */
 
 /**
- * Normalize a booking lookup response from backend into { booking, ticket, raw }.
- * Backend shapes might vary; this helper makes the frontend code predictable.
+ * Normalize a booking lookup response into a predictable shape:
+ * { booking, ticket, flight, raw }
  */
 function normalizeLookupResponse(res) {
   const raw = res.data;
-  // Preferred: backend returns { booking, ticket }
-  if (raw && (raw.booking || raw.ticket)) {
-    return { booking: raw.booking || null, ticket: raw.ticket || null, raw };
+
+  // booking candidate
+  let booking = null;
+  if (raw && (raw.booking || raw.ticket || raw.flight)) {
+    booking = raw.booking || null;
+  } else if (raw && raw._id) {
+    booking = raw;
+  } else if (raw && raw.data && Array.isArray(raw.data) && raw.data.length) {
+    booking = raw.data[0];
   }
-  // If backend returned booking directly
-  if (raw && raw._id) {
-    return { booking: raw, ticket: null, raw };
-  }
-  // If backend wrapped response: { data: [...] }
-  if (raw && raw.data && Array.isArray(raw.data)) {
-    return { booking: raw.data[0] || null, ticket: null, raw };
-  }
-  // fallback
-  return { booking: null, ticket: null, raw };
+
+  // ticket candidate
+  const ticket = raw && raw.ticket ? raw.ticket : null;
+
+  // flight candidate: try multiple places
+  let flight = null;
+  if (raw && raw.flight) flight = raw.flight;
+  else if (booking && booking.flight) flight = booking.flight;
+  else if (booking && booking.flightId && typeof booking.flightId === 'object' && booking.flightId._id) flight = booking.flightId;
+  // else leave null; caller may fetch from flight service by id
+
+  return { booking: booking || null, ticket, flight, raw };
 }
 
 /**
  * Public lookup by PNR using the authenticated axios instance.
- * Returns { booking, ticket, raw }.
+ * Returns { booking, ticket, flight, raw }.
  */
 export const lookupBookingByPnr = async (pnr) => {
   if (!pnr) throw new Error('pnr is required');
@@ -71,7 +66,7 @@ export const lookupBookingByPnr = async (pnr) => {
 /**
  * Public lookup by PNR WITHOUT auth header.
  * Uses a plain axios instance and API_BASE to guarantee no Authorization header is sent.
- * Returns { booking, ticket, raw }.
+ * Returns { booking, ticket, flight, raw }.
  */
 export const publicLookupBookingByPnr = async (pnr) => {
   if (!pnr) throw new Error('pnr is required');

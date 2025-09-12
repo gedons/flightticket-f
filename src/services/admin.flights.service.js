@@ -1,17 +1,33 @@
-// src/services/admin.flights.service.js
+// src/services/flights.service.js
 import api from './api';
 
-// create flight (admin)
+/**
+ * Public / user endpoints
+ */
+export const listFlights = (params = {}) => api.get('/flights', { params });
+export const getFlight = (id) => api.get(`/flights/${id}`);
+
+/**
+ * Admin endpoints (require admin JWT)
+ * - createFlight: POST /api/flights
+ * - updateFlight: PUT /api/flights/:id
+ * - deleteFlight: DELETE /api/flights/:id
+ */
 export const createFlight = (payload) => api.post('/flights', payload);
-
-// update flight
 export const updateFlight = (id, payload) => api.put(`/flights/${id}`, payload);
-
-// delete flight
 export const deleteFlight = (id) => api.delete(`/flights/${id}`);
 
-// list flights (admin or public can use /flights with query)
-export const listFlights = (params = {}) => api.get('/flights', { params });
+/**
+ * Helpful admin helper: get flights with admin-level details (just uses listFlights)
+ * If your backend has a dedicated admin listing endpoint, replace this.
+ */
+export const adminListFlights = (params = {}) => listFlights(params);
 
-// get one flight
-export const getFlight = (id) => api.get(`/flights/${id}`);
+export default {
+  listFlights,
+  getFlight,
+  createFlight,
+  updateFlight,
+  deleteFlight,
+  adminListFlights
+};

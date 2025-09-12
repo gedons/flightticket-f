@@ -24,6 +24,12 @@ const routes = [
   { path: '/tickets', name: 'TicketsList', component: () => import('../views/TicketsList.vue'), meta: { requiresAuth: true,  role: 'user' } },
   { path: '/tickets/:id/view', name: 'TicketView', component: () => import('../views/TicketView.vue'), meta: { requiresAuth: true,  role: 'user' } },
   { path: '/track', name: 'PublicTrack', component: () => import('../views/PublicTrack.vue') },
+  {
+    path: '/flights/list',
+    name: 'FlightsList',
+    component: () => import('../views/FlightsList.vue')
+  },
+
 
   //protected admin routes
   { path: '/admin', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true, role: 'admin' } },

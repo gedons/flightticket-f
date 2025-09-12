@@ -6,4 +6,9 @@ export const searchFlights = (params) => {
   return api.get('/flights', { params });
 };
 
+export const listFlights = (params) => {
+  // params: { origin, destination, date, passengers }
+  return api.get('/flights', { params });
+};
+
 export const getFlight = (id) => api.get(`/flights/${id}`);
