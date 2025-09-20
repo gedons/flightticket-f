@@ -12,25 +12,33 @@
       <div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
         <div class="text-center">
           <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent animate-fade-in">
-            Your Journey
-            <br>
-            <span class="relative">
-              Begins Here
-              <svg class="absolute -bottom-2 left-0 w-full h-3 text-yellow-400 opacity-80" viewBox="0 0 300 12" fill="currentColor">
-                <path d="M0,6 Q75,0 150,6 T300,6" stroke="currentColor" stroke-width="3" fill="none"/>
-              </svg>
-            </span>
+        Your Journey
+        <br>
+        <span class="relative">
+          Begins Here
+          <svg class="absolute -bottom-2 left-0 w-full h-3 text-yellow-400 opacity-80" viewBox="0 0 300 12" fill="currentColor">
+            <path d="M0,6 Q75,0 150,6 T300,6" stroke="currentColor" stroke-width="3" fill="none"/>
+          </svg>
+        </span>
           </h1>
           
           <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Discover amazing destinations, book flights in seconds, and create memories that last a lifetime with our seamless booking experience.
+        Discover amazing destinations, book flights in seconds, and create memories that last a lifetime with our seamless booking experience.
           </p>
-          <router-link
-            to="/track"
-            class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-1 transform transition-all duration-300"
-              >
-            Track Ticket
-          </router-link>
+          <div class="flex justify-center gap-4">
+        <router-link
+          to="/track"
+          class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-1 transform transition-all duration-300"
+        >
+          Track Ticket
+        </router-link>
+        <router-link
+          to="/shipment/track"
+          class="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-1 transform transition-all duration-300"
+        >
+          Track Shipment
+        </router-link>
+          </div>
         </div>
       </div>
     </div>
