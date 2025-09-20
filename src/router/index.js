@@ -24,6 +24,7 @@ const routes = [
   { path: '/tickets', name: 'TicketsList', component: () => import('../views/TicketsList.vue'), meta: { requiresAuth: true,  role: 'user' } },
   { path: '/tickets/:id/view', name: 'TicketView', component: () => import('../views/TicketView.vue'), meta: { requiresAuth: true,  role: 'user' } },
   { path: '/track', name: 'PublicTrack', component: () => import('../views/PublicTrack.vue') },
+  { path: '/shipment/track', name: 'PublicShipmentView', component: () => import('../views/PublicShipmentView.vue') },
   {
     path: '/flights/list',
     name: 'FlightsList',
@@ -37,7 +38,8 @@ const routes = [
   { path: '/admin/bookings', name: 'AdminBookings', component: () => import('../views/admin/AdminBookings.vue'), meta: { requiresAuth: true, role: 'admin' } },
   { path: '/admin/tickets', name: 'AdminTickets', component: () => import('../views/admin/AdminTickets.vue'), meta: { requiresAuth: true, role: 'admin' } },
   { path: '/admin/airports', name: 'AdminAirports', component: () => import('../views/admin/AdminAirports.vue'), meta: { requiresAuth: true, role: 'admin' } },
-
+  { path: '/admin/shipments', name: 'AdminShipments', component: () => import('../views/admin/AdminShipments.vue'), meta: { requiresAuth: true, role: 'admin' } },
+  { path: '/admin/shipments/:id', name: 'AdminShipmentDetail', component: () => import('../views/admin/AdminShipmentDetail.vue'), meta: { requiresAuth: true, role: 'admin' } },
   // catch all -> home
   { path: '/:catchAll(.*)', redirect: '/' }
 ];
